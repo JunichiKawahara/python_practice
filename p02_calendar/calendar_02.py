@@ -10,6 +10,7 @@ Copyright (C) 2019 J.Kawahara
 import datetime
 import sys
 
+
 def is_leap_year(year):
     """指定された年は閏年か？
 
@@ -17,7 +18,7 @@ def is_leap_year(year):
     ----------
     year : int
         対象の年
-    
+
     Returns
     -------
     boolean
@@ -40,18 +41,18 @@ def last_day_of_month(year, month):
         対象の年
     month : int
         対象の月
-    
+
     Returns
     -------
     int
         指定された年月の最終日
     """
-    
+
     if month != 2:
         if month in [4, 6, 9, 11]:
             return 30
         return 31
-    
+
     # 2月が指定された場合
     # 指定された年がうるう年かどうかを判断する
     if is_leap_year(year):
@@ -70,7 +71,7 @@ def last_day_of_month_easy(year, month):
         対象の年
     month : int
         対象の月
-    
+
     Returns
     -------
     int
@@ -87,7 +88,7 @@ def last_day_of_month_easy(year, month):
     last_date = next_month - datetime.timedelta(days=next_month.day)
     return last_date.day
 
-    
+
 def print_calendar(year, month):
     """カレンダーを表示する
 
@@ -115,7 +116,7 @@ def print_calendar(year, month):
 
     # 初日までの空欄を作成する
     line = ''
-    if first_days_week >0:
+    if first_days_week > 0:
         line += '  '
         line += ('   ' * (first_days_week - 1))
 
@@ -126,15 +127,15 @@ def print_calendar(year, month):
             line += ' '
         if d < 10:
             line += ' '
-        
+
         line += str(d)
 
         if w >= 6:
             print(line)
             line = ''
-        
+
         w = (w + 1) % 7
-    
+
     if line != '':
         print(line)
 
@@ -180,5 +181,5 @@ if __name__ == '__main__':
     if not (1 <= year <= 9999):
         print('年の値は、1～9999の間で指定してください。')
         print_usage()
-    
+
     print_calendar(year, month)
