@@ -48,7 +48,7 @@ def last_day_of_month(year, month):
     """
     
     if month != 2:
-        if month == 4 or month == 6 or month == 9 or month == 11:
+        if month in [4, 6, 9, 11]:
             return 30
         return 31
     
